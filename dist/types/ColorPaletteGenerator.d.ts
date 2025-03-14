@@ -34,9 +34,9 @@ export interface ColorPaletteParams {
      */
     hueRange?: number;
     /**
-     * Base {@link ColorModel#hex | ColorModel hexadecimal} representation to use to generate a palette. Default to a random color.
+     * Base {@link ColorModel} or {@link ColorModel#hex | ColorModel hexadecimal} representation to use to generate a palette. Default to a random color.
      */
-    baseColor?: ColorModel['hex'];
+    baseColor?: ColorModel | ColorModel['hex'];
     /**
      * Base saturation level to use when generating a random color if `baseColor` is not defined. Default to a random number between `20` and `85`.
      */
@@ -45,7 +45,7 @@ export interface ColorPaletteParams {
 /**
  * Generate a color palette based on a base {@link ColorModel}, a hue range and a precision level.
  *
- * Based on the theory explained in this {@link https://www.youtube.com/watch?v=u5AnzLg1HxY | video}, which generates a base palette as a set of colors around the base color by shifting its hue, then creates additional lighter and darker palettes by manipulating the saturation and brightness.
+ * Based on the theory explained in this {@link https://www.youtube.com/watch?v=u5AnzLg1HxY | video}, which is to generate a base palette as a set of colors around the given base color by shifting its hue increasingly, then creates additional lighter and darker palettes by manipulating the base palette colors saturation and brightness.
  *
  * @example
  * ```javascript
@@ -93,7 +93,7 @@ export declare class ColorPaletteGenerator {
      * @param param {@link ColorPaletteParams} used to generate the palette.
      */
     constructor({ rand, precision, hueRange, // in degrees
-    baseColor, // hex code
+    baseColor, // hex code or ColorModel
     baseSaturation, }?: ColorPaletteParams);
     /**
      * Sets the {@link baseColor} to use to generate the {@link palettes}.

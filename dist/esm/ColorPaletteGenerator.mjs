@@ -11,14 +11,18 @@ class ColorPaletteGenerator {
     hueRange = 180,
     // in degrees
     baseColor,
-    // hex code
+    // hex code or ColorModel
     baseSaturation
   } = {}) {
     this.rand = rand;
     this.precision = precision;
     this.hueRange = hueRange;
     if (baseColor) {
-      this.setBaseColor(baseColor, baseSaturation);
+      if (typeof baseColor === "string") {
+        this.setBaseColor(baseColor, baseSaturation);
+      } else {
+        this.baseColor = baseColor;
+      }
     } else {
       this.setBaseColor();
       this.baseColor.hsv = {

@@ -58,8 +58,8 @@ export interface CMYKColor {
  *
  * @example
  * ```javascript
- * const redColor = new Color('#ff0000')
- * const randomColor = new Color()
+ * const redColor = new ColorModel('#ff0000')
+ * const randomColor = new ColorModel()
  * ```
  */
 export class ColorModel {
@@ -85,7 +85,7 @@ export class ColorModel {
   #hsv: HSVColor
 
   /**
-   * Creates a new Color instance from a {@link HexColor | hex code}.
+   * Creates a new ColorModel instance from a {@link HexColor | hex code}.
    * @param hexCode The hexadecimal color code.
    */
   constructor(hexCode = '#000000' as HexColor) {
