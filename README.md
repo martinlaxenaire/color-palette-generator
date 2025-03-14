@@ -4,10 +4,26 @@ A small, lightweight utility helper to generate color palettes based on a given 
 
 Uses the theory explained in this [video](https://www.youtube.com/watch?v=u5AnzLg1HxY), which is to generate a base palette as a set of colors around the given base color by shifting its hue increasingly, then creates additional lighter and darker palettes by manipulating the base palette colors saturation and brightness.
 
+## Installation
+
+#### npm
+
+```
+npm i @martinlaxenaire/color-palette-generator
+```
+
+#### yarn
+
+```
+yarn add @martinlaxenaire/color-palette-generator
+```
+
+Or use any other package manager.
+
 ## Example
 
 ```javascript
-import { ColorModel, ColorPaletteGenerator } from '../src'
+import { ColorModel, ColorPaletteGenerator } from '@martinlaxenaire/color-palette-generator'
 
 const redColor = new ColorModel('#ff0000')
 const randomColor = new ColorModel()
