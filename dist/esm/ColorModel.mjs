@@ -8,7 +8,7 @@ var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "
 var _hex, _rgb, _hsl, _hsv;
 const _ColorModel = class _ColorModel {
   /**
-   * Creates a new Color instance from a {@link HexColor | hex code}.
+   * Creates a new ColorModel instance from a {@link HexColor | hex code}.
    * @param hexCode The hexadecimal color code.
    */
   constructor(hexCode = "#000000") {

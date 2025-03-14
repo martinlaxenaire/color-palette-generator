@@ -14,7 +14,7 @@
   var _hex, _rgb, _hsl, _hsv;
   const _ColorModel = class _ColorModel {
     /**
-     * Creates a new Color instance from a {@link HexColor | hex code}.
+     * Creates a new ColorModel instance from a {@link HexColor | hex code}.
      * @param hexCode The hexadecimal color code.
      */
     constructor(hexCode = "#000000") {
@@ -381,14 +381,18 @@
       hueRange = 180,
       // in degrees
       baseColor,
-      // hex code
+      // hex code or ColorModel
       baseSaturation
     } = {}) {
       this.rand = rand;
       this.precision = precision;
       this.hueRange = hueRange;
       if (baseColor) {
-        this.setBaseColor(baseColor, baseSaturation);
+        if (typeof baseColor === "string") {
+          this.setBaseColor(baseColor, baseSaturation);
+        } else {
+          this.baseColor = baseColor;
+        }
       } else {
         this.setBaseColor();
         this.baseColor.hsv = {
