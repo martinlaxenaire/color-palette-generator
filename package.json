@@ -16,15 +16,17 @@
     "version": "1.0.0",
     "description": "Color palette generator.",
     "keywords": [
-      "webgpu",
-      "wgsl",
-      "dom",
-      "html5",
+      "color",
+      "colour",
+      "palette",
+      "color-palette",
+      "palette-generator",
+      "utils",
+      "color-scheme",
+      "generative",
+      "generative-art",
       "javascript",
-      "3d",
-      "canvas",
-      "curtains",
-      "gpu-curtains"
+      "typescript"
     ],
     "author": {
       "name": "Martin Laxenaire",
