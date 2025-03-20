@@ -53,6 +53,18 @@ const randomParams = {
   sortByBrightness: {
     sortByBrightness: true,
   },
+  minBrightness: {
+    minBrightness: 0,
+    min: 0,
+    max: 75,
+    step: 1,
+  },
+  maxBrightness: {
+    maxBrightness: 100,
+    min: 25,
+    max: 100,
+    step: 1,
+  },
   minSaturation: {
     minSaturation: 0,
     min: 0,
@@ -79,6 +91,18 @@ const distributedParams = {
   },
   sortByBrightness: {
     sortByBrightness: true,
+  },
+  minBrightness: {
+    minBrightness: 0,
+    min: 0,
+    max: 75,
+    step: 1,
+  },
+  maxBrightness: {
+    maxBrightness: 100,
+    min: 25,
+    max: 100,
+    step: 1,
   },
   minSaturation: {
     minSaturation: 0,
@@ -215,6 +239,8 @@ const generateRandomPalette = () => {
     includeBaseColor: randomParams.includeBaseColor.includeBaseColor,
     filterPasses: randomParams.filterPasses.filterPasses,
     sortByBrightness: randomParams.sortByBrightness.sortByBrightness,
+    minBrightness: randomParams.minBrightness.minBrightness,
+    maxBrightness: randomParams.maxBrightness.maxBrightness,
     minSaturation: randomParams.minSaturation.minSaturation,
     maxSaturation: randomParams.maxSaturation.maxSaturation,
   })
@@ -225,6 +251,8 @@ const generateDistributedPalette = () => {
     length: distributedParams.length.length,
     includeBaseColor: distributedParams.includeBaseColor.includeBaseColor,
     sortByBrightness: distributedParams.sortByBrightness.sortByBrightness,
+    minBrightness: distributedParams.minBrightness.minBrightness,
+    maxBrightness: distributedParams.maxBrightness.maxBrightness,
     minSaturation: distributedParams.minSaturation.minSaturation,
     maxSaturation: distributedParams.maxSaturation.maxSaturation,
   })

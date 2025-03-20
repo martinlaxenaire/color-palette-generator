@@ -1,7 +1,7 @@
 /**
  * Represents a hex color in the format `#RRGGBB`.
  */
-export type HexColor = `#${string}`;
+export type HexColor = string;
 /**
  * Represents an RGB color.
  */
@@ -63,7 +63,7 @@ export declare class ColorModel {
      * Creates a new ColorModel instance from a {@link HexColor | hex code}.
      * @param hexCode The hexadecimal color code.
      */
-    constructor(hexCode?: HexColor);
+    constructor(hexCode?: string);
     /**
      * Gets the hexadecimal representation of the color.
      */

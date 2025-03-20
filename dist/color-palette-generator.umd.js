@@ -554,11 +554,15 @@
       includeBaseColor = false,
       filterPasses = true,
       sortByBrightness = true,
+      minBrightness = 0,
+      maxBrightness = 100,
       minSaturation = 0,
       maxSaturation = 100
     }) {
       if (length < 1) length = 1;
       let randomPalette = [...this.fullPalette];
+      randomPalette = randomPalette.filter((c) => c.hsv.v >= minBrightness);
+      randomPalette = randomPalette.filter((c) => c.hsv.v <= maxBrightness);
       randomPalette = randomPalette.filter((c) => c.hsv.s >= minSaturation);
       randomPalette = randomPalette.filter((c) => c.hsv.s <= maxSaturation);
       if (filterPasses && this.precision > 2) {
@@ -593,6 +597,8 @@
       length = 4,
       includeBaseColor = false,
       sortByBrightness = true,
+      minBrightness = 0,
+      maxBrightness = 100,
       minSaturation = 0,
       maxSaturation = 100
     }) {
@@ -602,6 +608,8 @@
         length = Math.max(0, length - 1);
       }
       let fullPalette = [...this.fullPalette];
+      fullPalette = fullPalette.filter((c) => c.hsv.v >= minBrightness);
+      fullPalette = fullPalette.filter((c) => c.hsv.v <= maxBrightness);
       fullPalette = fullPalette.filter((c) => c.hsv.s >= minSaturation);
       fullPalette = fullPalette.filter((c) => c.hsv.s <= maxSaturation);
       if (fullPalette.length <= length + 1) {

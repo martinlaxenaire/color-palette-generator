@@ -150,7 +150,7 @@ export declare class ColorPaletteGenerator {
      * @param param.maxSaturation Maximum saturation level of the random returned {@link ColorModel}. Default to `100`.
      * @returns Random {@link ColorPalette}.
      */
-    getRandomPalette({ length, includeBaseColor, filterPasses, sortByBrightness, minSaturation, maxSaturation, }: {
+    getRandomPalette({ length, includeBaseColor, filterPasses, sortByBrightness, minBrightness, maxBrightness, minSaturation, maxSaturation, }: {
         /** Number of {@link ColorModel} returned. Default to `4`. */
         length?: number;
         /** Whether to include the {@link baseColor} in the returned {@link ColorPalette}. Default to `false`. */
@@ -159,6 +159,10 @@ export declare class ColorPaletteGenerator {
         filterPasses?: boolean;
         /** Whether to sort the returned {@link ColorModel} by brightness/value, from dark to light. Default to `true`. */
         sortByBrightness?: boolean;
+        /** Minimum brightness/value level of the returned {@link ColorModel}. Default to `0`. */
+        minBrightness?: number;
+        /** Maximum brightness/value level of the returned {@link ColorModel}. Default to `100`. */
+        maxBrightness?: number;
         /** Minimum saturation level of the random returned {@link ColorModel}. Default to `0`. */
         minSaturation?: number;
         /** Maximum saturation level of the random returned {@link ColorModel}. Default to `100`. */
@@ -174,13 +178,17 @@ export declare class ColorPaletteGenerator {
      * @param param.maxSaturation Maximum saturation level of the returned {@link ColorModel}. Default to `100`.
      * @returns Distributed {@link ColorPalette}.
      */
-    getDistributedPalette({ length, includeBaseColor, sortByBrightness, minSaturation, maxSaturation, }: {
+    getDistributedPalette({ length, includeBaseColor, sortByBrightness, minBrightness, maxBrightness, minSaturation, maxSaturation, }: {
         /** Number of {@link ColorModel} returned. Default to `4`. */
         length?: number;
         /** Whether to include the {@link baseColor} in the returned {@link ColorPalette}. Default to `false`. */
         includeBaseColor?: boolean;
         /** Whether to sort the returned {@link ColorModel} by brightness/value, from dark to light. Default to `true`. */
         sortByBrightness?: boolean;
+        /** Minimum brightness/value level of the returned {@link ColorModel}. Default to `0`. */
+        minBrightness?: number;
+        /** Maximum brightness/value level of the returned {@link ColorModel}. Default to `100`. */
+        maxBrightness?: number;
         /** Minimum saturation level of the returned {@link ColorModel}. Default to `0`. */
         minSaturation?: number;
         /** Maximum saturation level of the returned {@link ColorModel}. Default to `100`. */

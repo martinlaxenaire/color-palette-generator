@@ -307,6 +307,8 @@ export class ColorPaletteGenerator {
     includeBaseColor = false,
     filterPasses = true,
     sortByBrightness = true,
+    minBrightness = 0,
+    maxBrightness = 100,
     minSaturation = 0,
     maxSaturation = 100,
   }: {
@@ -318,6 +320,10 @@ export class ColorPaletteGenerator {
     filterPasses?: boolean
     /** Whether to sort the returned {@link ColorModel} by brightness/value, from dark to light. Default to `true`. */
     sortByBrightness?: boolean
+    /** Minimum brightness/value level of the returned {@link ColorModel}. Default to `0`. */
+    minBrightness?: number
+    /** Maximum brightness/value level of the returned {@link ColorModel}. Default to `100`. */
+    maxBrightness?: number
     /** Minimum saturation level of the random returned {@link ColorModel}. Default to `0`. */
     minSaturation?: number
     /** Maximum saturation level of the random returned {@link ColorModel}. Default to `100`. */
@@ -327,6 +333,10 @@ export class ColorPaletteGenerator {
 
     // get all generated colors
     let randomPalette: ColorPalette = [...this.fullPalette]
+
+    // brightness filters
+    randomPalette = randomPalette.filter((c) => c.hsv.v >= minBrightness)
+    randomPalette = randomPalette.filter((c) => c.hsv.v <= maxBrightness)
 
     // saturation filters
     randomPalette = randomPalette.filter((c) => c.hsv.s >= minSaturation)
@@ -377,6 +387,8 @@ export class ColorPaletteGenerator {
     length = 4,
     includeBaseColor = false,
     sortByBrightness = true,
+    minBrightness = 0,
+    maxBrightness = 100,
     minSaturation = 0,
     maxSaturation = 100,
   }: {
@@ -386,6 +398,10 @@ export class ColorPaletteGenerator {
     includeBaseColor?: boolean
     /** Whether to sort the returned {@link ColorModel} by brightness/value, from dark to light. Default to `true`. */
     sortByBrightness?: boolean
+    /** Minimum brightness/value level of the returned {@link ColorModel}. Default to `0`. */
+    minBrightness?: number
+    /** Maximum brightness/value level of the returned {@link ColorModel}. Default to `100`. */
+    maxBrightness?: number
     /** Minimum saturation level of the returned {@link ColorModel}. Default to `0`. */
     minSaturation?: number
     /** Maximum saturation level of the returned {@link ColorModel}. Default to `100`. */
@@ -399,6 +415,10 @@ export class ColorPaletteGenerator {
     }
 
     let fullPalette = [...this.fullPalette]
+
+    // brightness filters
+    fullPalette = fullPalette.filter((c) => c.hsv.v >= minBrightness)
+    fullPalette = fullPalette.filter((c) => c.hsv.v <= maxBrightness)
 
     // saturation filters
     fullPalette = fullPalette.filter((c) => c.hsv.s >= minSaturation)
