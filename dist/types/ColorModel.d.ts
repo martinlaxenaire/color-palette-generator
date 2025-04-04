@@ -164,9 +164,9 @@ export declare class ColorModel {
      * @param min The minimum saturation value.
      * @returns The updated color instance.
      */
-    saturate(saturation?: number, max?: number, min?: number): this;
+    saturateHsv(saturation?: number, max?: number, min?: number): this;
     /**
-     * Adjusts the brightness of the color.
+     * Adjusts the brightness of the color in the HSV color space.
      * @param brightness The amount to adjust the brightness.
      * @param max The maximum brightness value.
      * @param min The minimum brightness value.

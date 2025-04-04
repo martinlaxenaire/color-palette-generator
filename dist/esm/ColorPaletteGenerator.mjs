@@ -41,7 +41,7 @@ class ColorPaletteGenerator {
   setBaseColor(baseColor = "#000000", baseSaturation = null) {
     this.baseColor = new ColorModel(baseColor);
     if (baseSaturation !== void 0) {
-      this.baseColor.saturate(baseSaturation);
+      this.baseColor.saturateHsv(baseSaturation);
     }
   }
   /**
