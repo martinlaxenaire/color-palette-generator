@@ -4,6 +4,8 @@ A small, lightweight utility helper to generate color palettes based on a given 
 
 Uses the theory explained in this [video](https://www.youtube.com/watch?v=u5AnzLg1HxY), which is to generate a base palette as a set of colors around the given base color by shifting its hue increasingly, then creates additional lighter and darker palettes by manipulating the base palette colors saturation and brightness.
 
+[Demo](https://martinlaxenaire.github.io/color-palette-generator/)
+
 ## Installation
 
 #### npm
