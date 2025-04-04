@@ -1,13 +1,13 @@
-import { ColorPalette, ColorPaletteGenerator, HexColor } from '../src'
+import { ColorPaletteGenerator } from '../dist/esm/index.mjs'
 
-const canvas = document.getElementById('canvas') as HTMLCanvasElement
+const canvas = document.getElementById('canvas')
 const rect = canvas.getBoundingClientRect()
 
 const dpr = window.devicePixelRatio || 1
 canvas.width = rect.width * dpr
 canvas.height = rect.height * dpr
 
-const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+const ctx = canvas.getContext('2d')
 ctx.scale(dpr, dpr)
 
 ctx.fillStyle = 'white'
@@ -151,7 +151,7 @@ const postParams = {
 
 const paletteGenerator = new ColorPaletteGenerator()
 
-let outputPalette: ColorPalette | null = null
+let outputPalette = null
 
 const gui = new lil.GUI()
 
@@ -174,7 +174,7 @@ const addGUI = () => {
       paletteGenerator.precision = params.precision.precision
 
       paletteGenerator.hueRange = params.hueRange.hueRange
-      paletteGenerator.setBaseColor(params.baseColor.baseColor as HexColor, params.baseSaturation.baseSaturation)
+      paletteGenerator.setBaseColor(params.baseColor.baseColor, params.baseSaturation.baseSaturation)
 
       paletteGenerator.generatePalettes()
       generateDistributedPalette()
