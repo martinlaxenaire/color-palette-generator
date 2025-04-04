@@ -309,14 +309,14 @@
      * @param min The minimum saturation value.
      * @returns The updated color instance.
      */
-    saturate(saturation = 0, max = 100, min = 0) {
+    saturateHsv(saturation = 0, max = 100, min = 0) {
       const currentSat = this.hsv.s;
       this.hsv.s = currentSat + saturation > max ? max : currentSat + saturation < min ? min : currentSat + saturation;
       this.hsl = this.hsvToHsl(this.hsv);
       return this;
     }
     /**
-     * Adjusts the brightness of the color.
+     * Adjusts the brightness of the color in the HSV color space.
      * @param brightness The amount to adjust the brightness.
      * @param max The maximum brightness value.
      * @param min The minimum brightness value.
@@ -324,7 +324,7 @@
      */
     brighten(brightness = 0, max = 100, min = 0) {
       const currentBrightness = this.hsv.v;
-      this.hsl.l = currentBrightness + brightness > max ? max : currentBrightness + brightness < min ? min : currentBrightness + brightness;
+      this.hsv.v = currentBrightness + brightness > max ? max : currentBrightness + brightness < min ? min : currentBrightness + brightness;
       this.hsl = this.hsvToHsl(this.hsv);
       return this;
     }
@@ -411,7 +411,7 @@
     setBaseColor(baseColor = "#000000", baseSaturation = null) {
       this.baseColor = new ColorModel(baseColor);
       if (baseSaturation !== void 0) {
-        this.baseColor.saturate(baseSaturation);
+        this.baseColor.saturateHsv(baseSaturation);
       }
     }
     /**

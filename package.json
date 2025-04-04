@@ -13,7 +13,7 @@
     "vite": "^6.1.0"
   },
   "name": "@martinlaxenaire/color-palette-generator",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A small, lightweight utility helper to generate color palettes based on a given input color.",
   "keywords": [
     "color",

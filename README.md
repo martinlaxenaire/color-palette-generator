@@ -29,7 +29,9 @@ import { ColorModel } from '@martinlaxenaire/color-palette-generator'
 
 const redColor = new ColorModel('#ff0000')
 const randomColor = new ColorModel()
-const greenColor = new ColorModel('#3459c7')
+const greenColor = new ColorModel('#29ab63')
+
+const brighterGreenColor = greenColor.clone().saturateHsv(10).brighten(10)
 ```
 
 ### Creating palette generators
@@ -40,7 +42,7 @@ import { ColorModel, ColorPaletteGenerator } from '@martinlaxenaire/color-palett
 // create a palette generator from a random color
 const palette = new ColorPaletteGenerator()
 
-const greenColor = new ColorModel('#3459c7')
+const greenColor = new ColorModel('#29ab63')
 
 // create another palette generator from a green color
 const paletteFromColor = new ColorPaletteGenerator({
@@ -56,7 +58,7 @@ A random palette just picks colors randomly from the color palette generator.
 ```javascript
 import { ColorModel, ColorPaletteGenerator } from '@martinlaxenaire/color-palette-generator'
 
-const greenColor = new ColorModel('#3459c7')
+const greenColor = new ColorModel('#29ab63')
 
 // create a palette from a green color
 const paletteFromColor = new ColorPaletteGenerator({
