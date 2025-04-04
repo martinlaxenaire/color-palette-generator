@@ -137,7 +137,7 @@ export class ColorPaletteGenerator {
   setBaseColor(baseColor: ColorModel['hex'] = '#000000', baseSaturation: number | null = null) {
     this.baseColor = new ColorModel(baseColor)
     if (baseSaturation !== undefined) {
-      this.baseColor.saturate(baseSaturation)
+      this.baseColor.saturateHsv(baseSaturation)
     }
   }
 

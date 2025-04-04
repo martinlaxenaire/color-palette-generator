@@ -119,17 +119,39 @@ const distributedParams = {
 }
 
 const postParams = {
-  saturation: {
-    saturation: 0,
-    min: -100,
-    max: 100,
-    step: 1,
+  HSV: {
+    saturation: {
+      saturation: 0,
+      min: -100,
+      max: 100,
+      step: 1,
+    },
+    brightness: {
+      brightness: 0,
+      min: -100,
+      max: 100,
+      step: 1,
+    },
+  },
+  HSL: {
+    saturation: {
+      saturation: 0,
+      min: -100,
+      max: 100,
+      step: 1,
+    },
+    lightness: {
+      lightness: 0,
+      min: -100,
+      max: 100,
+      step: 1,
+    },
   },
 }
 
 const paletteGenerator = new ColorPaletteGenerator()
 
-let randomPalette: ColorPalette | null = null
+let outputPalette: ColorPalette | null = null
 
 const gui = new lil.GUI()
 
@@ -221,20 +243,24 @@ const addGUI = () => {
 
   const post = gui.addFolder('Post params')
   Object.keys(postParams).forEach((key, index) => {
-    const controller = post.add(postParams[key], key)
+    const folder = post.addFolder(key)
 
-    if (postParams[key].min !== undefined) controller.min(postParams[key].min)
-    if (postParams[key].max !== undefined) controller.max(postParams[key].max)
-    if (postParams[key].step !== undefined) controller.step(postParams[key].step)
+    Object.keys(postParams[key]).forEach((postParam) => {
+      const controller = folder.add(postParams[key][postParam], postParam)
 
-    controller.onFinishChange((value) => {
-      draw()
+      if (postParams[key][postParam].min !== undefined) controller.min(postParams[key][postParam].min)
+      if (postParams[key][postParam].max !== undefined) controller.max(postParams[key][postParam].max)
+      if (postParams[key][postParam].step !== undefined) controller.step(postParams[key][postParam].step)
+
+      controller.onFinishChange((value) => {
+        draw()
+      })
     })
   })
 }
 
 const generateRandomPalette = () => {
-  randomPalette = paletteGenerator.getRandomPalette({
+  outputPalette = paletteGenerator.getRandomPalette({
     length: randomParams.length.length,
     includeBaseColor: randomParams.includeBaseColor.includeBaseColor,
     filterPasses: randomParams.filterPasses.filterPasses,
@@ -247,7 +273,7 @@ const generateRandomPalette = () => {
 }
 
 const generateDistributedPalette = () => {
-  randomPalette = paletteGenerator.getDistributedPalette({
+  outputPalette = paletteGenerator.getDistributedPalette({
     length: distributedParams.length.length,
     includeBaseColor: distributedParams.includeBaseColor.includeBaseColor,
     sortByBrightness: distributedParams.sortByBrightness.sortByBrightness,
@@ -291,19 +317,21 @@ const draw = () => {
     )
   }
 
-  if (randomPalette) {
-    console.log(randomPalette)
+  if (outputPalette) {
+    for (let i = 0; i < outputPalette.length; i++) {
+      const color = outputPalette[i].clone()
 
-    for (let i = 0; i < randomPalette.length; i++) {
-      const color = randomPalette[i].clone()
-
-      color.saturate(postParams.saturation.saturation)
+      color
+        .saturateHsv(postParams.HSV.saturation.saturation)
+        .brighten(postParams.HSV.brightness.brightness)
+        .saturateHsl(postParams.HSL.saturation.saturation)
+        .lighten(postParams.HSL.lightness.lightness)
 
       ctx.fillStyle = color.hex
       ctx.fillRect(
-        (i * rect.width) / randomPalette.length,
+        (i * rect.width) / outputPalette.length,
         rect.height / 2,
-        rect.width / randomPalette.length,
+        rect.width / outputPalette.length,
         rect.height / 2
       )
     }

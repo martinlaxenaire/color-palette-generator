@@ -408,7 +408,7 @@ export class ColorModel {
    * @param min The minimum saturation value.
    * @returns The updated color instance.
    */
-  saturate(saturation: number = 0, max: number = 100, min: number = 0): this {
+  saturateHsv(saturation: number = 0, max: number = 100, min: number = 0): this {
     const currentSat = this.hsv.s
     this.hsv.s = currentSat + saturation > max ? max : currentSat + saturation < min ? min : currentSat + saturation
 
@@ -417,7 +417,7 @@ export class ColorModel {
   }
 
   /**
-   * Adjusts the brightness of the color.
+   * Adjusts the brightness of the color in the HSV color space.
    * @param brightness The amount to adjust the brightness.
    * @param max The maximum brightness value.
    * @param min The minimum brightness value.
@@ -425,7 +425,7 @@ export class ColorModel {
    */
   brighten(brightness: number = 0, max: number = 100, min: number = 0): this {
     const currentBrightness = this.hsv.v
-    this.hsl.l =
+    this.hsv.v =
       currentBrightness + brightness > max
         ? max
         : currentBrightness + brightness < min
