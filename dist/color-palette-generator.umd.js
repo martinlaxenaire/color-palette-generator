@@ -51,7 +51,17 @@
      * Sets the hexadecimal color and updates related color representations.
      */
     set hex(value) {
-      __privateSet(this, _hex, value);
+      if (value.length < 7) {
+        const chars = value.split(/(?!$)/u);
+        value = "#";
+        for (let i = 1; i <= 3; i++) {
+          value += chars[i] ?? "0";
+          value += chars[i] ?? "0";
+        }
+      } else if (value.length > 7) {
+        value = value.substring(0, 7);
+      }
+      __privateSet(this, _hex, "#" + value.substring(1, 7));
       __privateSet(this, _rgb, this.hexToRgb(value));
       __privateSet(this, _hsl, this.rgbToHsl(this.rgb));
       __privateSet(this, _hsv, this.hslToHsv(this.hsl));
@@ -125,9 +135,9 @@
     hexToRgb(hexCode) {
       const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexCode);
       return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
+        r: Math.floor(parseInt(result[1], 16)),
+        g: Math.floor(parseInt(result[2], 16)),
+        b: Math.floor(parseInt(result[3], 16))
       } : { r: 0, g: 0, b: 0 };
     }
     // RGB & HSL
@@ -390,8 +400,10 @@
       if (baseColor) {
         if (typeof baseColor === "string") {
           this.setBaseColor(baseColor, baseSaturation);
-        } else {
+        } else if (baseColor instanceof ColorModel) {
           this.baseColor = baseColor;
+        } else {
+          this.setBaseColor();
         }
       } else {
         this.setBaseColor();
