@@ -20,8 +20,10 @@ class ColorPaletteGenerator {
     if (baseColor) {
       if (typeof baseColor === "string") {
         this.setBaseColor(baseColor, baseSaturation);
-      } else {
+      } else if (baseColor instanceof ColorModel) {
         this.baseColor = baseColor;
+      } else {
+        this.setBaseColor();
       }
     } else {
       this.setBaseColor();
